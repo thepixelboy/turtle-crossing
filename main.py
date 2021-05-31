@@ -31,6 +31,11 @@ while game_is_on:
     car_manager.move_cars()
     car_manager.clear_cars()
 
+    # Detect collision with car
+    for car in car_manager.cars:
+        if car.distance(player) < 30:
+            game_is_on = False
+
     # Detect the player reaching finish line (top of the screen)
     if player.ycor() > player.finish_line:
         player.reset_position()
