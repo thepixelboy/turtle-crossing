@@ -13,7 +13,20 @@ screen.tracer(0)
 # Variables
 game_is_on = True
 
+# Creating the player
+player = Player()
+
+# Listening for keypress to move the player
+screen.listen()
+screen.onkeypress(player.move, "Up")
+
 # Main loop
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+
+    # Detect the player reaching finish line (top of the screen)
+    if player.ycor() > player.finish_line:
+        player.reset_position()
+
+screen.exitonclick()
