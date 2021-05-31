@@ -10,6 +10,7 @@ class CarManager():
     def __init__(self):
         super().__init__()
         self.cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     def create_car(self):
         """Creates a car and adds it to the list"""
@@ -27,7 +28,7 @@ class CarManager():
     def move_cars(self):
         """Moves the cars on the screen"""
         for car in self.cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
 
     def clear_cars(self):
         """Removes a car from the list when it surpases the x axis of the screen"""
@@ -36,3 +37,6 @@ class CarManager():
                 self.cars.remove(car)
                 car.reset()
                 car.hideturtle()
+
+    def increase_speed(self):
+        self.car_speed += MOVE_INCREMENT

@@ -39,5 +39,6 @@ while game_is_on:
     # Detect the player reaching finish line (top of the screen)
     if player.ycor() > player.finish_line:
         player.reset_position()
+        car_manager.increase_speed()
 
 screen.exitonclick()
