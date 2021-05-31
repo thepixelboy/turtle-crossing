@@ -16,6 +16,7 @@ game_is_on = True
 # Creating the player
 player = Player()
 car_manager = CarManager()
+scoreboard = Scoreboard()
 
 # Listening for keypress to move the player
 screen.listen()
@@ -33,12 +34,14 @@ while game_is_on:
 
     # Detect collision with car
     for car in car_manager.cars:
-        if car.distance(player) < 30:
-            game_is_on = False
+        if car.distance(player) < 20:
+            scoreboard.game_over()
+            game_is_on = False            
 
     # Detect the player reaching finish line (top of the screen)
     if player.ycor() > player.finish_line:
         player.reset_position()
         car_manager.increase_speed()
+        scoreboard.pump_up_level()
 
 screen.exitonclick()
