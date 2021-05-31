@@ -12,6 +12,7 @@ class CarManager():
         self.cars = []
 
     def create_car(self):
+        """Creates a car and adds it to the list"""
         random_chance = random.randint(1, 6)
 
         if random_chance == 1:
@@ -24,5 +25,14 @@ class CarManager():
             self.cars.append(new_car)
 
     def move_cars(self):
+        """Moves the cars on the screen"""
         for car in self.cars:
             car.backward(STARTING_MOVE_DISTANCE)
+
+    def clear_cars(self):
+        """Removes a car from the list when it surpases the x axis of the screen"""
+        for car in self.cars:
+            if car.xcor() < -320:
+                self.cars.remove(car)
+                car.reset()
+                car.hideturtle()

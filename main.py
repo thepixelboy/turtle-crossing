@@ -29,6 +29,7 @@ while game_is_on:
     # Create cars and move it along the screen
     car_manager.create_car()
     car_manager.move_cars()
+    car_manager.clear_cars()
 
     # Detect the player reaching finish line (top of the screen)
     if player.ycor() > player.finish_line:
